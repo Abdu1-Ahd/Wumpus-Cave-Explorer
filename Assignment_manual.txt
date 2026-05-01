@@ -1,0 +1,14 @@
+Question 6: Coding Project – Dynamic Wumpus Logic Agent (Web App) 
+Objective: Develop a Web-based Dynamic Pathfinding Agent that acts as a Knowledge-Based Agent. The  agent must navigate a Wumpus World-style grid, receiving dynamic percepts as it moves, and use  Propositional Logic to deduce safe cells. 
+1. Environment Specifications 
+The agent will operate within a grid system that must support the following features: 
+• Dynamic Grid Sizing: The application must allow the user to define the grid dimensions (Rows ×  Columns). 
+• Dynamic Hazards: At the start of every episode, Pits and a Wumpus must be randomly placed. The agent  DOES NOT know their locations initially. 
+• Percept Generation: If the agent is in a cell adjacent to a Pit, it receives a 'Breeze'. If adjacent to the  Wumpus, it receives a 'Stench'. 
+2. Algorithmic Implementation (The Inference Engine) 
+• Knowledge Base (KB): The agent must maintain a Propositional Logic KB. When it receives a percept, it  must TELL the KB the new rules (e.g., B_2,1 ⇔ P_2,2 ∨ P_3,1 ∨ P_1,1). 
+• Resolution Refutation: Before moving to an unvisited adjacent cell, the agent must ASK its KB if the cell  is safe (e.g., Prove ¬P_2,2 ∧ ¬W_2,2). You must program an automated Resolution Refutation function  that converts the KB to CNF and resolves clauses to find a contradiction.
+3. Mandatory Visualization & Metrics 
+The project requires a Web-based Graphical User Interface (e.g., React, Vue, or Vanilla JS/Canvas). Console only outputs are not acceptable. 
+• Grid Visualization: Visually display the grid on the web page. Highlight Safe cells (Green),  Unknown/Unvisited cells (Gray), and Confirmed Pits/Wumpus (Red). 
+• Real-Time Metrics Dashboard: Display the total number of Inference Steps taken by the Resolution  algorithm, and the current Percepts active at the agent's location. 
