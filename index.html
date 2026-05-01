@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wumpus Logic Agent</title>
+  <meta name="description" content="A Knowledge-Based Agent navigating the Wumpus World using Propositional Logic and Resolution Refutation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       LEFT COLUMN — Controls
+  ═══════════════════════════════════════ -->
+  <aside class="col-left" id="col-left">
+
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <div>
+        <div class="brand-title">Wumpus</div>
+        <div class="brand-sub">Logic Agent</div>
+      </div>
+    </div>
+
+    <!-- Grid Config -->
+    <section class="ctrl-section">
+      <div class="section-label">World Config</div>
+      <div class="cfg-row">
+        <div class="cfg-field">
+          <label for="input-rows">Rows</label>
+          <input id="input-rows" type="number" value="5" min="2" max="10" />
+        </div>
+        <div class="cfg-sep">×</div>
+        <div class="cfg-field">
+          <label for="input-cols">Cols</label>
+          <input id="input-cols" type="number" value="5" min="2" max="10" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Toggles -->
+    <section class="ctrl-section">
+      <div class="section-label">Agent Controls</div>
+
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <span class="toggle-icon">⚡</span>
+          <div>
+            <div class="toggle-label">Auto Run</div>
+            <div class="toggle-desc">Agent runs automatically</div>
+          </div>
+        </div>
+        <label class="toggle-switch" id="toggle-auto-wrap">
+          <input type="checkbox" id="toggle-auto" />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="toggle-row">
+        <div class="toggle-info">
+          <span class="toggle-icon">👁</span>
+          <div>
+            <div class="toggle-label">Reveal Truth</div>
+            <div class="toggle-desc">Show hidden hazards</div>
+          </div>
+        </div>
+        <label class="toggle-switch" id="toggle-truth-wrap">
+          <input type="checkbox" id="toggle-truth" />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+      </div>
+
+    </section>
+
+    <!-- Speed Slider -->
+    <section class="ctrl-section" id="speed-section">
+      <div class="section-label">Speed</div>
+      <div class="slider-row">
+        <span class="slider-label">Slow</span>
+        <input type="range" id="speed-slider" min="100" max="1500" value="1100" step="100" />
+        <span class="slider-label">Fast</span>
+      </div>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="ctrl-section">
+      <button class="btn-primary" id="btn-step">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5,3 19,12 5,21"/></svg>
+        Step
+      </button>
+      <button class="btn-outline" id="btn-reset">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        New Game
+      </button>
+    </section>
+
+    <!-- Legend -->
+    <section class="ctrl-section legend">
+      <div class="section-label">Legend</div>
+      <div class="legend-item"><span class="legend-dot visited"></span> Visited</div>
+      <div class="legend-item"><span class="legend-dot safe"></span> Inferred Safe</div>
+      <div class="legend-item"><span class="legend-dot danger"></span> Inferred Danger</div>
+      <div class="legend-item"><span class="legend-dot unknown"></span> Unknown</div>
+    </section>
+
+  </aside>
+
+  <!-- ═══════════════════════════════════════
+       CENTER COLUMN — The Grid
+  ═══════════════════════════════════════ -->
+  <main class="col-center">
+    <div class="grid-wrapper">
+      <div id="grid"></div>
+    </div>
+  </main>
+
+  <!-- ═══════════════════════════════════════
+       RIGHT COLUMN — Dashboard
+  ═══════════════════════════════════════ -->
+  <aside class="col-right">
+
+    <!-- Percepts -->
+    <section class="dash-section">
+      <div class="section-label">Active Percepts</div>
+      <div id="percept-list" class="percept-list"></div>
+    </section>
+
+    <!-- Metrics -->
+    <section class="dash-section">
+      <div class="section-label">Metrics</div>
+      <div class="metrics-stack">
+        <div class="metric-card">
+          <div class="metric-num" id="val-inference">0</div>
+          <div class="metric-name">Inference Steps</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" id="val-moves">0</div>
+          <div class="metric-name">Moves Taken</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-num" id="val-kb">0</div>
+          <div class="metric-name">KB Clauses</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reasoning Log -->
+    <section class="dash-section log-section">
+      <div class="section-label">Reasoning Log</div>
+      <div id="log-container" class="log-body"></div>
+    </section>
+
+  </aside>
+
+  <!-- Status overlay -->
+  <div id="game-overlay" class="game-overlay hidden">
+    <div class="overlay-card">
+      <div class="overlay-emoji" id="overlay-emoji"></div>
+      <div class="overlay-title" id="overlay-title"></div>
+      <div class="overlay-sub" id="overlay-sub"></div>
+      <button class="btn-primary" id="overlay-btn">Play Again</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/kb.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/agent.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
