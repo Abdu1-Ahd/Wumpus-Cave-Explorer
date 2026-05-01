@@ -1,14 +1,14 @@
 # AI2002 — Assignment #6: Wumpus Logic Agent Technical Report
 
-**Student Submission:** Abdu1-Ahd  
+**Student:** Abdul-Ahad Zawiar  
 **Project:** Knowledge-Based Agent (Wumpus Cave Explorer)
 
 ---
 
 ## 🔗 Project Links
-- **GitHub Repository:** [github.com/Abdu1-Ahd/Wumpus-Cave-Explorer](https://github.com/Abdu1-Ahd/Wumpus-Cave-Explorer)
-- **Live Deployment (Vercel):** [wumpus-explorer.vercel.app](https://wumpus-explorer.vercel.app)
-- **LinkedIn Profile:** [INSERT YOUR LINKEDIN LINK HERE]
+- **GitHub Repository:** [https://github.com/Abdu1-Ahd/Wumpus-Cave-Explorer](https://github.com/Abdu1-Ahd/Wumpus-Cave-Explorer)
+- **Live Deployment (Vercel):** [https://wumpus-explorer.vercel.app](https://wumpus-explorer.vercel.app)
+- **LinkedIn Demo:** [https://www.linkedin.com/posts/abdul-ahad-zawiar-35b7a2335_the-challengeto-navigate-a-grid-based-environment-ugcPost-7456052473170915328-AFvO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRM3XcBcP2Zl5nnCsYQFuX4_Dc8Hb9VCz8](https://www.linkedin.com/posts/abdul-ahad-zawiar-35b7a2335_the-challengeto-navigate-a-grid-based-environment-ugcPost-7456052473170915328-AFvO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFRM3XcBcP2Zl5nnCsYQFuX4_Dc8Hb9VCz8)
 
 ---
 
