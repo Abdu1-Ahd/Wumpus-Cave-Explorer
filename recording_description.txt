@@ -1,0 +1,7 @@
+Wumpus Cave Explorer — AI Agent Demo
+
+A live demonstration of a Knowledge-Based AI agent autonomously navigating a randomized cavern grid. The agent receives only localized percepts — Breeze, Stench, and Glitter — and uses a custom Propositional Logic Resolution engine to deduce safe paths without any prior knowledge of the map.
+
+The recording walks through the control panel, showcasing dynamic grid configuration, simulation speed control, and the "Reveal Truth" toggle. Two complete autonomous runs are shown: one where the agent successfully locates the hidden treasure through logical inference, and one where the environment forces a dead end — illustrating the agent's conservative, safety-first reasoning strategy in real time.
+
+Built with Vanilla JS, no external libraries.
