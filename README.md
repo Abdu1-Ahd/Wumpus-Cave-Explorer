@@ -236,4 +236,5 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
   <sub>Built for AI2002 Assignment #6 · Wumpus World Knowledge-Based Agent</sub>
 </div>
 
-<!-- dev-sync: 8a068a04 | ts: 2026-06-27T11:32:27+0500 -->
+
+<!-- dev-sync: bdb61cf9 | ts: 2026-06-27T11:33:25+0500 -->
